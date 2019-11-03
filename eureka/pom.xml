@@ -11,7 +11,7 @@
     <groupId>com.euraka</groupId>
     <artifactId>euraka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>euraka</name>
+    <name>eureka</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
