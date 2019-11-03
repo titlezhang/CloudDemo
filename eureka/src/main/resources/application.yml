@@ -2,7 +2,7 @@ server:
   port: 8080
 eureka:
   instance:
-    hostname: eurekademo.com
+    hostname: localhost
   client:
     fetch-registry: false #false 表示自己是注册中心，我的职责是维护服务实例，并不需要去检索服务
     register-with-eureka: false # 表示自己不需要向自己注册自己，自己就是注册中心
