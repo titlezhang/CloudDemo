@@ -11,7 +11,7 @@
     </parent>
     <groupId>com.cloud</groupId>
     <artifactId>cloud</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>cloud</name>
     <description>Demo project for Cloud</description>
 
@@ -23,7 +23,7 @@
   <modules>
     <module>admin</module>
     <module>eureka</module>
-      <module>common</module>
+    <module>common</module>
   </modules>
 
     <dependencyManagement>

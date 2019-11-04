@@ -5,8 +5,8 @@
     <parent>
         <groupId>com.cloud</groupId>
         <artifactId>cloud</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>0.0.1</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>admin</artifactId>
     <version>0.0.1-SNAPSHOT</version>
