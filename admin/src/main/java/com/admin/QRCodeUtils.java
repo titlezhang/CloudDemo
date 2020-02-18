@@ -6,7 +6,6 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.linlibang.common.config.Global;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -26,9 +25,9 @@ import java.util.Hashtable;
  * @author ThinkGem
  * @version 2014-02-28
  */
-public class ZxingHandler {
+public class QRCodeUtils {
 
-	private static Logger logger = LoggerFactory.getLogger(ZxingHandler.class);
+	private static Logger logger = LoggerFactory.getLogger(QRCodeUtils.class);
 	    private static int BARCODE_SIZE = 80;//条形码的单位宽度
 	    private static int QRCODE_SIZE = 500;//二维码的单位宽度
 	    private static String FORMAT = "jpg";// 生成的图片格式
@@ -168,10 +167,10 @@ public class ZxingHandler {
 		String contents = "6923450657713";
 		int width = 105, height = 50;
 		
-		ZxingHandler.encode(contents, width, height, imgPath);
+		QRCodeUtils.encode(contents, width, height, imgPath);
 		System.out.println("finished zxing EAN-13 encode.");
 
-		String decodeContent = ZxingHandler.decode(imgPath);
+		String decodeContent = QRCodeUtils.decode(imgPath);
 		System.out.println("解码内容如下：" + decodeContent);
 		System.out.println("finished zxing EAN-13 decode.");
 		
@@ -182,15 +181,15 @@ public class ZxingHandler {
 				+ "\nEMail [ thinkgem@163.com ]";
 		int width2 = 300, height2 = 300;
 
-		ZxingHandler.encode2(contents2, width2, height2, imgPath2);
+		QRCodeUtils.encode2(contents2, width2, height2, imgPath2);
 		System.out.println("finished zxing encode.");
 
-		String decodeContent2 = ZxingHandler.decode2(imgPath2);
+		String decodeContent2 = QRCodeUtils.decode2(imgPath2);
 		System.out.println("解码内容如下：" + decodeContent2);
 		System.out.println("finished zxing decode.");		
 	}
 	
-	public static String encodeAgent(String contents, int width, int height) throws Exception {				
+	public static String encodeAgent(String contents, int width, int height,String directory) throws Exception {
 		Hashtable<EncodeHintType, Object> hints = new Hashtable<EncodeHintType, Object>();
 		// 指定纠错等级
 		hints.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);
@@ -200,7 +199,7 @@ public class ZxingHandler {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
 				.getRequestAttributes()).getRequest();
 		String path=request.getSession().getServletContext().
-				getRealPath(Global.getConfig("qrCode"))+"/"+contents+".png";
+				getRealPath(directory)+"/"+contents+".png";
 			if(!new File(path).exists())   
 			{ 
 			    new File(path).mkdirs(); 
