@@ -1,0 +1,7 @@
+com\timesplus\generator\dao\SysGeneratorDao.class
+com\timesplus\generator\service\impl\SysGeneratorServiceImpl.class
+com\timesplus\generator\service\SysGeneratorService.class
+com\timesplus\generator\bean\ColumnBean.class
+com\timesplus\generator\controller\SysGeneratorController.class
+com\timesplus\generator\utils\GenUtils.class
+com\timesplus\generator\bean\TableBean.class

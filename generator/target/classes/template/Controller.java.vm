@@ -1,0 +1,91 @@
+package ${package}.controller;
+
+import java.util.List;
+import java.util.Map;
+
+import io.swagger.annotations.Api;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import ${package}.api.bean.${className}Bean;
+import ${package}.api.service.${className}Service;
+import com.timesplus.common.utils.Query;
+import com.timesplus.common.utils.RetResponseData;
+import com.timesplus.common.utils.RetResult;
+
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@RestController
+@Api(value = "")
+@RequestMapping("${pathName}")
+public class ${className}Controller {
+
+	@Autowired
+	private ${className}Service ${classname}Service;
+	
+	/**
+	 * 列表
+	 * 必传参数： {"pageNum": "1", "pageSize":1}
+	 */
+	@PostMapping("/list")
+	public RetResult list(@RequestBody Map<String, Object> params){
+		//查询列表数据
+        PageVo page=new PageVo(params);
+		List<${className}Bean> ${classname}List = ${classname}Service.queryList(params);
+      	return RetResponseData.makeOKRsp(page);
+	}
+	
+	
+	/**
+	 * 信息
+	 */
+	@GetMapping("/info/{${pk.attrrname}}")
+	public RetResult info(@PathVariable ${pk.attrType} ${pk.attrrname}){
+		${className}Bean ${classname} = ${classname}Service.queryObject(${pk.attrrname});
+
+      return RetResponseData.makeOKRsp(${classname});
+	}
+	
+	/**
+	 * 保存
+	 */
+	@PostMapping("/save")
+	public RetResult save(${className}Bean ${classname}Bean){
+		${classname}Service.save(${classname}Bean);
+
+      return RetResponseData.makeOKRsp();
+	}
+	
+	/**
+	 * 修改
+	 */
+	@PutMapping("/update")
+	public RetResult update(${className}Bean ${classname}Bean){
+		${classname}Service.update(${classname}Bean);
+
+      return RetResponseData.makeOKRsp();
+	}
+	
+	/**
+	 * 删除,批量删除逗号隔开
+	 */
+	@DeleteMapping("/delete/{${pk.attrrname}s}")
+	public RetResult delete(@PathVariable ${pk.attrType}[] ${pk.attrrname}s){
+		${classname}Service.deleteBatch(${pk.attrrname}s);
+
+      return RetResponseData.makeOKRsp();
+	}
+	
+}

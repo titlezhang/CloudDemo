@@ -1,5 +1,6 @@
 package com.admin;
 
+import com.common.utils.QRCodeUtils;
 import com.google.zxing.WriterException;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.stereotype.Controller;

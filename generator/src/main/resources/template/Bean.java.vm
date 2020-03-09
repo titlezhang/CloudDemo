@@ -1,0 +1,42 @@
+package ${package}.entity;
+
+import java.io.Serializable;
+import java.util.Date;
+import lombok.Data;
+
+#if(${hasBigDecimal})
+import java.math.BigDecimal;
+#end
+
+
+/**
+ * ${comments}
+ * 
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Data
+public class ${className}Bean implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
+#foreach ($column in $columns)
+	//$column.comments
+	private $column.attrType $column.attrrname#if(${column.attrrname}=="delFlag")=0#end;
+#end
+
+###foreach ($column in $columns)
+##	/**
+##	 * 设置：${column.comments}
+##	 */
+##	public void set${column.attrName}($column.attrType $column.attrrname) {
+##		this.$column.attrrname = $column.attrrname;
+##	}
+##	/**
+##	 * 获取：${column.comments}
+##	 */
+##	public $column.attrType get${column.attrName}() {
+##		return $column.attrrname;
+##	}
+###end
+}

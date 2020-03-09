@@ -1,0 +1,78 @@
+package ${package}.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.BeanUtils;
+import ${package}.common.entity.${className};
+import ${package}.api.dao.${className}Dao;
+import ${package}.api.bean.${className}Bean;
+import ${package}.api.service.${className}Service;
+
+
+/**
+ * @author ${author}
+ * @email ${email}
+ * @date ${datetime}
+ */
+@Service("${classname}Service")
+public class ${className}ServiceImpl implements ${className}Service {
+	@Autowired
+	private ${className}Dao ${classname}Dao;
+	
+	@Override
+	public ${className}Bean queryObject(${pk.attrType} ${pk.attrrname}){
+	${className}Bean ${classname}Bean = null;
+		${className} ${classname} =  ${classname}Dao.queryObject(${pk.attrrname});
+			if( ${classname} != null ) {
+			${classname}Bean = new ${className}Bean();
+			BeanUtils.copyProperties( ${classname}, ${classname}Bean );
+		}
+		return ${classname}Bean;
+	}
+	
+	@Override
+	public List<${className}Bean> queryList(Map<String, Object> map){
+		List<${className}Bean> ${classname}Beans = new ArrayList<>();
+		List<${className}> list = ${classname}Dao.queryList( map );
+		for( ${className} ${classname} : list ) {
+			${className}Bean ${classname}Bean = new ${className}Bean();
+			BeanUtils.copyProperties( ${classname}, ${classname}Bean );
+			${classname}Beans.add( ${classname}Bean );
+		}
+		return ${classname}Beans;
+	}
+	
+	@Override
+	public int queryTotal(Map<String, Object> map){
+		return ${classname}Dao.queryTotal(map);
+	}
+	
+	@Override
+	public void save(${className}Bean ${classname}Bean){
+		${className} ${classname} = new ${className}();
+      BeanUtils.copyProperties( ${classname}Bean, ${classname} );
+			${classname}Dao.save(${classname});
+	}
+	
+	@Override
+	public void update(${className}Bean ${classname}Bean){
+		${className} ${classname} = new ${className}();
+      BeanUtils.copyProperties( ${classname}Bean, ${classname} );
+			${classname}Dao.update(${classname});
+	}
+	
+	@Override
+	public void delete(${pk.attrType} ${pk.attrrname}){
+		${classname}Dao.delete(${pk.attrrname});
+	}
+	
+	@Override
+	public void deleteBatch(${pk.attrType}[] ${pk.attrrname}s){
+		${classname}Dao.deleteBatch(${pk.attrrname}s);
+	}
+	
+}
