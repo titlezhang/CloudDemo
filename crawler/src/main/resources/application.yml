@@ -1,7 +1,7 @@
 server:
-  port: 8082
+  port: 8083
   servlet:
-    context-path: /admin
+    context-path: /crawler
 eureka:
   instance:
     hostname: localhost
@@ -11,7 +11,7 @@ eureka:
       defaultZone: http://localhost:8080/eureka
 spring:
   application:
-    name: admin
+    name: crawler
   datasource:
     url: jdbc:mysql://localhost:3306/test
 mybatis:

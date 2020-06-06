@@ -15,7 +15,7 @@ import java.io.IOException;
 public class TestController {
     @RequestMapping("qrcode")
     @ResponseBody
-    public String qrCodeTest(@RequestParam("url") String url){
+    public String qrCodeTest(@RequestParam("url") String url) {
         try {
             byte[] qrCodeBytes = QRCodeUtils.createQRCodeToBytes(url);
             String qrCode = "data:image/jpg;base64," + Base64.encodeBase64String(qrCodeBytes);
