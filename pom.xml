@@ -24,6 +24,7 @@
     <module>admin</module>
     <module>eureka</module>
     <module>common</module>
+      <module>crawler</module>
   </modules>
 
     <dependencyManagement>
