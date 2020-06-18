@@ -25,6 +25,7 @@
     <module>eureka</module>
     <module>common</module>
       <module>crawler</module>
+      <module>gateway</module>
   </modules>
 
     <dependencyManagement>
