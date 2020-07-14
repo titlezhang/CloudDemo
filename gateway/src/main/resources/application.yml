@@ -21,9 +21,9 @@ spring:
           # 是否和服务注册与发现组件结合，设置为 true 后可以直接使用应用名称调用服务
           enabled: true
       routes:
-        - id:
-          uri:
+        - id: hello_gateway
+          uri: http://localhost:8082/admin
           predicates:
-            - path:
+            - path=/
 mybatis:
   config-location:
