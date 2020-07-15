@@ -1,7 +1,5 @@
 server:
-  port: 80
-  servlet:
-    context-path: /api
+  port: 8085
 eureka:
   instance:
     hostname: localhost
@@ -9,21 +7,22 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://localhost:8080/eureka
+
 spring:
   application:
     name: gateway
   datasource:
     url: jdbc:mysql://localhost:3306/test
   cloud:
+    loadbalancer:
+      ribbon:
+        enabled: false
     gateway:
       discovery:
-        locator:
-          # 是否和服务注册与发现组件结合，设置为 true 后可以直接使用应用名称调用服务
-          enabled: true
+          locator:
+            enabled: true
       routes:
-        - id: hello_gateway
-          uri: http://localhost:8082/admin
-          predicates:
-            - path=/
-mybatis:
-  config-location:
+      - id: hello_gateway
+        uri: http://localhost:8082
+        predicates:
+        - Path=/admin/** #把进行网关的，所有admin开头的请求都转向http://localhost:8082服务（把Ip和端口替换为Uri定义的，其余不变）
