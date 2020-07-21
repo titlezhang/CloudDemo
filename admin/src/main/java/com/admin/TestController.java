@@ -4,7 +4,6 @@ import com.admin.remote.service.ICrawlerService;
 import com.common.utils.QRCodeUtils;
 import com.google.zxing.WriterException;
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

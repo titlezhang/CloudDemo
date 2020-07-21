@@ -22,7 +22,8 @@ spring:
           locator:
             enabled: true
       routes:
-      - id: hello_gateway
-        uri: http://localhost:8082
+      - id: path-routes #path控制
+        uri: lb://admin
+        #uri: http://localhost:8082
         predicates:
         - Path=/admin/** #把进行网关的，所有admin开头的请求都转向http://localhost:8082服务（把Ip和端口替换为Uri定义的，其余不变）

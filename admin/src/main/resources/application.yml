@@ -16,3 +16,9 @@ spring:
     url: jdbc:mysql://localhost:3306/test
 mybatis:
   config-location:
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 1000 #Feign的连接建立超时时间，默认为10秒
+        readTimeout: 10000 #Feign的请求处理超时时间，默认为60秒
